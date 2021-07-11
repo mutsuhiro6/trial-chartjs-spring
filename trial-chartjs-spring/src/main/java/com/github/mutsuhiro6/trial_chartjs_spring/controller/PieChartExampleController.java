@@ -10,13 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.BorderAlign;
-import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.BorderRadius;
-import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.BorderRadius.BorderRadiusProperty;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.ChartConfig;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.ChartTypes;
-import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.Clip;
-import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.Clip.ClipProperty;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.Color;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.Data;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.DoughnutAndPieChartDataset;
@@ -24,10 +19,10 @@ import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.RGB;
 
 
 @Controller
-public class DoughnutChartExampleController {
+public class PieChartExampleController {
 
-  @GetMapping("/doughnut")
-  public String doughnutChartExample(Model model)
+  @GetMapping("/pie")
+  public String pieChartExample(Model model)
       throws IllegalAccessException, InvocationTargetException, NoSuchMethodException,
       JsonProcessingException {
     List<String> labels = new ArrayList<>(Arrays.asList("Red", "Blue", "Yellow"));
@@ -35,16 +30,12 @@ public class DoughnutChartExampleController {
         new RGB(255, 99, 132),
         new RGB(54, 162, 235),
         new RGB(255, 205, 86)));
-    DoughnutAndPieChartDataset dataset = new DoughnutAndPieChartDataset("My first dataset",
+    DoughnutAndPieChartDataset dd = new DoughnutAndPieChartDataset("My first dataset",
         new ArrayList<Double>(Arrays.asList(300.0, 50.0, 100.0)), backgroundColor);
-    dataset.setHoverOffset(8);
-    dataset.setBorderAlign(BorderAlign.inner);
-    dataset.setClip(new Clip<>(new ClipProperty(2, 3, -1, 4)));
-    dataset.setBorderColor(backgroundColor);
-    dataset.setBorderRadius(new BorderRadius<>(BorderRadiusProperty.innerEnd));
-    List<DoughnutAndPieChartDataset> datasets = new ArrayList<>(Arrays.asList(dataset));
+    dd.setHoverOffset(8);
+    List<DoughnutAndPieChartDataset> datasets = new ArrayList<>(Arrays.asList(dd));
     Data data = new Data(labels, datasets);
-    ChartConfig config = new ChartConfig(ChartTypes.doughnut, data);
+    ChartConfig config = new ChartConfig(ChartTypes.pie, data);
     ObjectMapper mapper = new ObjectMapper();
     @SuppressWarnings("unchecked")
     Map<String, Object> configMap = mapper.convertValue(config, Map.class);

@@ -1,15 +1,37 @@
 package com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs;
 
+import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
-public class Dataset {
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+public class Dataset<T> {
 
-  private String label = null;
+  private ChartTypes type;
 
-  private List<Double> data = null;
+  private String label;
+
+  private List<T> data = new ArrayList<>();
+
+  public Dataset(String label, List<T> data) {
+    this(data);
+    this.label = label;
+  }
+
+  public Dataset(List<T> data) {
+    this.data = data;
+  }
+
+  public Dataset(ChartTypes type, String label, List<T> data) {
+    this(label, data);
+    this.type = type;
+  }
+
+  public Dataset(ChartTypes type, List<T> data) {
+    this(data);
+    this.type = type;
+  }
 
 }
