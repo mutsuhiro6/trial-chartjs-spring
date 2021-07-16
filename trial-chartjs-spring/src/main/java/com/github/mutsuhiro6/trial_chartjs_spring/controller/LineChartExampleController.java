@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.ChartConfig;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.ChartTypes;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.Data;
@@ -35,9 +34,7 @@ public class LineChartExampleController {
     List<LineChartDataset> datasets = new ArrayList<>(Arrays.asList(dataset));
     Data data = new Data(labels, datasets);
     ChartConfig config = new ChartConfig(ChartTypes.line, data);
-    ObjectMapper mapper = new ObjectMapper();
-    @SuppressWarnings("unchecked")
-    Map<String, Object> configMap = mapper.convertValue(config, Map.class);
+    Map<String, Object> configMap = config.getConfigMap();
     model.addAttribute("config", configMap);
     return "doughnut";
   }

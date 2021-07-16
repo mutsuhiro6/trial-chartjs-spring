@@ -11,4 +11,18 @@ public class BorderRadius<T> {
   public static enum BorderRadiusProperty {
     outerStart, outerEnd, innerStart, innerEnd,;
   }
+
+  @Data
+  @AllArgsConstructor
+  public static class BorderRadiusProperties {
+
+    private double topLeft;
+
+    private double topRight;
+
+    private double bottomLeft;
+
+    private double bottomRight;
+
+  }
 }

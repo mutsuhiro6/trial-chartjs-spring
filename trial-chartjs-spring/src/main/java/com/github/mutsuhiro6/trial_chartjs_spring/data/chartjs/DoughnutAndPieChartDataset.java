@@ -41,9 +41,8 @@ public class DoughnutAndPieChartDataset extends Dataset<Double> {
 
   private int weight = 1;
 
-  public DoughnutAndPieChartDataset(String label, List<Double> data, List<Color> backgroundColor) {
+  public DoughnutAndPieChartDataset(String label, List<Double> data) {
     super(label, data);
-    this.backgroundColor = backgroundColor;
   }
 
   public List<String> getBackgroundColor() {

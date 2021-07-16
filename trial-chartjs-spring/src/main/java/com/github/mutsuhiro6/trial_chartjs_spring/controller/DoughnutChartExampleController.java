@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.BorderAlign;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.BorderRadius;
 import com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs.BorderRadius.BorderRadiusProperty;
@@ -36,7 +35,8 @@ public class DoughnutChartExampleController {
         new RGB(54, 162, 235),
         new RGB(255, 205, 86)));
     DoughnutAndPieChartDataset dataset = new DoughnutAndPieChartDataset("My first dataset",
-        new ArrayList<Double>(Arrays.asList(300.0, 50.0, 100.0)), backgroundColor);
+        new ArrayList<Double>(Arrays.asList(300.0, 50.0, 100.0)));
+    dataset.setBackgroundColor(backgroundColor);
     dataset.setHoverOffset(8);
     dataset.setBorderAlign(BorderAlign.inner);
     dataset.setClip(new Clip<>(new ClipProperty(2, 3, -1, 4)));
@@ -45,9 +45,7 @@ public class DoughnutChartExampleController {
     List<DoughnutAndPieChartDataset> datasets = new ArrayList<>(Arrays.asList(dataset));
     Data data = new Data(labels, datasets);
     ChartConfig config = new ChartConfig(ChartTypes.doughnut, data);
-    ObjectMapper mapper = new ObjectMapper();
-    @SuppressWarnings("unchecked")
-    Map<String, Object> configMap = mapper.convertValue(config, Map.class);
+    Map<String, Object> configMap = config.getConfigMap();
     model.addAttribute("config", configMap);
     return "doughnut";
   }
