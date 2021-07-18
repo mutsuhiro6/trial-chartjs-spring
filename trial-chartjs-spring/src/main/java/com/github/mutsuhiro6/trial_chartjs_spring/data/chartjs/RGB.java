@@ -16,7 +16,6 @@ public class RGB implements Color {
 
   @Override
   public String getColor() {
-    // TODO 自動生成されたメソッド・スタブ
     return this.color;
   }
 }

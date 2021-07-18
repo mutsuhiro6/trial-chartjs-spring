@@ -1,25 +1,25 @@
 package com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class BorderWidth<T> {
 
-  private T borderWidth;
+  private final T borderWidth;
 
-  @Data
+  @Getter
   @AllArgsConstructor
   public static class BorderWidthProperty {
 
-    private double left;
+    private final double left;
 
-    private double top;
+    private final double top;
 
-    private double right;
+    private final double right;
 
-    private double bottom;
+    private final double bottom;
 
   }
 }

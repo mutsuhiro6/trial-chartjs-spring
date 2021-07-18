@@ -1,8 +1,10 @@
 package com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@Data
+@Getter
+@AllArgsConstructor
 public class AreaData {
-  private Object fill;
+  private final Object fill;
 }

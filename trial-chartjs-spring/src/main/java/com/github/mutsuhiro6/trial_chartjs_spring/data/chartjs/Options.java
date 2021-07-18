@@ -1,10 +1,8 @@
 package com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class Options {
 
   private String indexAxis;

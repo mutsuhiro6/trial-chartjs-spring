@@ -1,28 +1,28 @@
 package com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class BorderRadius<T> {
-  private T borderRadius;
+  private final T borderRadius;
 
   public static enum BorderRadiusProperty {
     outerStart, outerEnd, innerStart, innerEnd,;
   }
 
-  @Data
+  @Getter
   @AllArgsConstructor
   public static class BorderRadiusProperties {
 
-    private double topLeft;
+    private final double topLeft;
 
-    private double topRight;
+    private final double topRight;
 
-    private double bottomLeft;
+    private final double bottomLeft;
 
-    private double bottomRight;
+    private final double bottomRight;
 
   }
 }

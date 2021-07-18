@@ -1,14 +1,16 @@
 package com.github.mutsuhiro6.trial_chartjs_spring.data.chartjs;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@Data
+@Getter
+@AllArgsConstructor
 public class BubbleData {
 
-  double x;
+  private final double x;
 
-  double y;
+  private final double y;
 
-  double r;
+  private final double r;
 
 }
